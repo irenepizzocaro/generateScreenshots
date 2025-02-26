@@ -3,8 +3,10 @@
 */
 
 #include "generateScreenshots.h"
+#include "stb_image.h"
+#include "stb_image_write.h"
 
-void generate(func render, float[16] projection, int stepMultiRis, std::string screenshotsPath) {
+void generate(void (*render()), float (*projection)[16], int stepMultiRis, std::string screenshotsPath) {
 
     for (int scl = 0; scl < stepMultiRis; scl++) {
         int gridDim = static_cast<int>(pow(2, scl));
@@ -12,9 +14,9 @@ void generate(func render, float[16] projection, int stepMultiRis, std::string s
         for (int i = 0; i < gridDim; i++) {
             for (int j = 0; j < gridDim; j++) {
 
-                projection = getProjectionModifier(i, j, gridDim);
+                projection = getProjectionModifier(i, j, gridDim) * projection;
 
-                render(projection);
+                render();
 
                 std::string path = screenshotsPath + std::to_string(gridDim) + "-" + std::to_string(i) + "-" + std::to_string(j) + ".png";
 
@@ -26,7 +28,6 @@ void generate(func render, float[16] projection, int stepMultiRis, std::string s
     }
 }
 
-//funzioni
 void saveScreenshot(int width, int height, const char* filepath) {
     // Buffer per contenere i pixel
     unsigned char* pixels = new unsigned char[3 * width * height];  // 3 perchè usiamo RGB
@@ -58,4 +59,8 @@ glm::mat4 getProjectionModifier(int i, int j, int n) {
 
     return translateFactor * scalingFactor;
 }
+
+// devo cambiare savescreenshot perchè il framebuffer ce l'ho già? 
+// non posso ritornare glm::mat4 perchè non è detto che l'utente usi glm? 
+// funzione che fornisce scala e traslazione ??
 
