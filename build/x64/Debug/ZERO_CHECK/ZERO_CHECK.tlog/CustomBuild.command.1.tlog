@@ -1,0 +1,10 @@
+^C:\USERS\SEREP\DESKTOP\IRE\TIROCINIO\GENERATESCREENSHOTSLIB\BUILD\CMAKEFILES\51E7215900E7505CF580216BE16871C7\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib -BC:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/GenerateScreenshotsLib.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

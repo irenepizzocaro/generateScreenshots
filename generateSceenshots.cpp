@@ -1,12 +1,33 @@
 /*  Funzioni necessarie a generare e salvare
-    screenshots di un modello renderizzato in ambiente OpenGL 
+    screenshots di un render in ambiente OpenGL 
 */
 
 #include "generateScreenshots.h"
-#include "stb_image.h"
-#include "stb_image_write.h"
 
-void generate(void (*render()), float (*projection)[16], int stepMultiRis, std::string screenshotsPath) {
+#define GLM_ENABLE_EXPERIMENTAL
+
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#define STB_IMAGE_IMPLEMENTATION
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <stb_image.h>
+#include <stb_image_write.h>
+#include <gtx/transform.hpp>
+#include <gtc/type_ptr.hpp>
+
+#include <string>
+
+void generate(std::function<void()> render, float* projection, int stepMultiRis, std::string screenshotsPath, const unsigned int SCR_WIDTH, const unsigned int SCR_HEIGHT) {
+    /*
+    * @param render - funzione per il render
+    * @param projection - matrice di proiezione
+    * @param stepMultirisoluzione - numero di livelli di risoluzione che si intende generare
+    * @param screenshotsPath - percorso dove si intendono salvare gli screenshots
+    * @param SCR_WIDTH - larghezza in px per ogni screenshot
+    * @param SCR_HEIGHT - altezza in px per ogni screenshot
+    */
+    glm::mat4 proj = glm::make_mat4(projection);
 
     for (int scl = 0; scl < stepMultiRis; scl++) {
         int gridDim = static_cast<int>(pow(2, scl));
@@ -14,7 +35,8 @@ void generate(void (*render()), float (*projection)[16], int stepMultiRis, std::
         for (int i = 0; i < gridDim; i++) {
             for (int j = 0; j < gridDim; j++) {
 
-                projection = getProjectionModifier(i, j, gridDim) * projection;
+                proj = getProjectionModifier(i, j, gridDim) * proj;
+                projection = glm::value_ptr(proj);
 
                 render();
 
@@ -59,8 +81,4 @@ glm::mat4 getProjectionModifier(int i, int j, int n) {
 
     return translateFactor * scalingFactor;
 }
-
-// devo cambiare savescreenshot perchè il framebuffer ce l'ho già? 
-// non posso ritornare glm::mat4 perchè non è detto che l'utente usi glm? 
-// funzione che fornisce scala e traslazione ??
 

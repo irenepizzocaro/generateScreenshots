@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\serep\Desktop\IRE\TIROCINIO\generateScreenshotsLib\include\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\serep\Desktop\IRE\TIROCINIO\generateScreenshotsLib\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{06D34793-5A33-3743-B5EF-7B9AB786338B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

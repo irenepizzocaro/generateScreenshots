@@ -1,0 +1,13 @@
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/CMakeFiles/glad.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/CMakeFiles/GenerateScreenshotsLib.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/CMakeFiles/INSTALL.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/include/GLFW/CMakeFiles/uninstall.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/include/GLFW/CMakeFiles/INSTALL.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/include/GLFW/CMakeFiles/ALL_BUILD.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/include/GLFW/src/CMakeFiles/glfw.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/include/GLFW/src/CMakeFiles/update_mappings.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/include/GLFW/src/CMakeFiles/INSTALL.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/include/GLFW/docs/CMakeFiles/INSTALL.dir
+C:/Users/serep/Desktop/IRE/TIROCINIO/generateScreenshotsLib/build/include/glm/CMakeFiles/INSTALL.dir

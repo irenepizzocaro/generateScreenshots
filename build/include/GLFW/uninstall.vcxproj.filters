@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\serep\Desktop\IRE\TIROCINIO\generateScreenshotsLib\build\CMakeFiles\798c4405d471354f1eff2b1c1c20dd4e\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\serep\Desktop\IRE\TIROCINIO\generateScreenshotsLib\include\glfw\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\serep\Desktop\IRE\TIROCINIO\generateScreenshotsLib\build\include\GLFW\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2C6E6511-F519-3E8B-9525-C3FBB5CA577D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
