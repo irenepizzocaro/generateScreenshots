@@ -4,14 +4,15 @@
  * { github link }
  *
  * questa libreria necessita l'utilizzo della libreria PanZoom
- * Copyright Timmy Willison and other contributors
+ * <script src="https://unpkg.com/@panzoom/panzoom@4.6.0/dist/panzoom.min.js"></script>
+ *  * Copyright Timmy Willison and other contributors
  * https://github.com/timmywil/panzoom/blob/main/MIT-License.txt
- *
+ * 
  *
 */
 
-function init(containerID, minimapID, path, stepMultiRis) {
-    /**
+
+/**
      * Inizializza la griglia di immagini e la minimappa.
      * 
      * @param {string} containerID - ID dell'elemento div dentro il quale mettere la griglia.
@@ -19,6 +20,7 @@ function init(containerID, minimapID, path, stepMultiRis) {
      * @param {string} path - Percorso degli screenshots.
      * @param {number} stepMultiRis - Numero di livelli multirisoluzione renderizzati.
      */
+function init(containerID, minimapID, path, stepMultiRis) {
 
     console.log('init iniziata')
     const main = document.getElementById(containerID)

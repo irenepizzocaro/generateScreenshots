@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>viewer panning zoom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div>
+        <div class="image-container" id="container">
+            <div id="grid"></div>
+        </div>
+    
+        <div id="wireframe">
+            <span class="label">wireframe</span>
+            <label class="switch">
+                <input type="checkbox" id="wireframe-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+    
+
+    <div id="minimap">
+        <div id="minimap-viewport"></div>
+    </div>
+
+    <!-- script -->
+    <script src="panzoom_lib.js"></script>
+    <script src="myscript.js"></script>
+    <script src="minimap.js"></script>
+      
+</body>
+</html>
