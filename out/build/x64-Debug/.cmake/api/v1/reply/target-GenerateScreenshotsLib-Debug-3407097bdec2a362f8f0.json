@@ -124,12 +124,12 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 2,
-			"id" : "glfw::@7cf4cdf8cc575720cdf7"
-		},
-		{
 			"backtrace" : 3,
 			"id" : "glad::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "glfw::@7cf4cdf8cc575720cdf7"
 		}
 	],
 	"id" : "GenerateScreenshotsLib::@6890427a1f51a3e7e1df",
