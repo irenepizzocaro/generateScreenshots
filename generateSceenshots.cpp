@@ -4,30 +4,41 @@
 
 #include "generateScreenshots.h"
 
+#ifndef _MSC_VER
+#define sprintf_s(buffer, fmt, ...) snprintf(buffer, sizeof(buffer), fmt, __VA_ARGS__)
+#endif
+
 #define GLM_ENABLE_EXPERIMENTAL
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#ifdef __APPLE__
+  #define GL_SILENCE_DEPRECATION
+  #include <OpenGL/gl3.h>
+#else
+  #include <GL/gl.h>
+#endif
 
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
+
 #include <stb_image.h>
 #include <stb_image_write.h>
-#include <gtx/transform.hpp>
-#include <gtc/type_ptr.hpp>
+#include <glm/gtx/transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <string>
+#include <functional>
 
-void generate(std::function<void()> render, float* projection, int stepMultiRis, std::string screenshotsPath, const unsigned int SCR_WIDTH, const unsigned int SCR_HEIGHT) {
-    /*
-    * @param render - funzione per il render
-    * @param projection - matrice di proiezione
-    * @param stepMultirisoluzione - numero di livelli di risoluzione che si intende generare
-    * @param screenshotsPath - percorso dove si intendono salvare gli screenshots
-    * @param SCR_WIDTH - larghezza in px per ogni screenshot
-    * @param SCR_HEIGHT - altezza in px per ogni screenshot
-    */
-    glm::mat4 proj = glm::make_mat4(projection);
+/*
+* @param render - funzione per il render
+* @param projection - matrice di proiezione
+* @param stepMultirisoluzione - numero di livelli di risoluzione che si intende generare
+* @param screenshotsPath - percorso dove si intendono salvare gli screenshots
+* @param SCR_WIDTH - larghezza in px per ogni screenshot
+* @param SCR_HEIGHT - altezza in px per ogni screenshot
+*/
+void generate(const std::function<void()> &render, glm::mat4& projection, const int stepMultiRis,
+    const std::string &screenshotsPath, const unsigned int SCR_WIDTH, const unsigned int SCR_HEIGHT) {
+    const glm::mat4 baseProjection = projection;
 
     for (int scl = 0; scl < stepMultiRis; scl++) {
         int gridDim = static_cast<int>(pow(2, scl));
@@ -35,8 +46,12 @@ void generate(std::function<void()> render, float* projection, int stepMultiRis,
         for (int i = 0; i < gridDim; i++) {
             for (int j = 0; j < gridDim; j++) {
 
-                proj = getProjectionModifier(i, j, gridDim) * proj;
-                projection = glm::value_ptr(proj);
+                projection = baseProjection;
+                projection = getProjectionModifier(i, j, gridDim) * projection;
+
+                glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                glFinish();
 
                 render();
 
@@ -48,9 +63,11 @@ void generate(std::function<void()> render, float* projection, int stepMultiRis,
             }
         }
     }
+
+    projection = baseProjection;
 }
 
-void saveScreenshot(int width, int height, const char* filepath) {
+void saveScreenshot(const int width, const int height, const char* filepath) {
     // Buffer per contenere i pixel
     unsigned char* pixels = new unsigned char[3 * width * height];  // 3 perchè usiamo RGB
 
@@ -71,13 +88,13 @@ void saveScreenshot(int width, int height, const char* filepath) {
     delete[] flippedPixels;
 }
 
-glm::mat4 getProjectionModifier(int i, int j, int n) {
+glm::mat4 getProjectionModifier(const int i, const int j, const int n) {
 
-    float xOffSet = n - (2 * i) - 1;
-    float yOffSet = n - (2 * j) - 1;
+    const float xOffSet = n - (2 * i) - 1;
+    const float yOffSet = n - (2 * j) - 1;
 
-    glm::mat4 scalingFactor = glm::scale(glm::mat4(1.0f), glm::vec3(n, n, 1.0f));
-    glm::mat4 translateFactor = glm::translate(glm::mat4(1.0f), glm::vec3(xOffSet, yOffSet, 0.0f));
+    const glm::mat4 scalingFactor = glm::scale(glm::mat4(1.0f), glm::vec3(n, n, 1.0f));
+    const glm::mat4 translateFactor = glm::translate(glm::mat4(1.0f), glm::vec3(xOffSet, yOffSet, 0.0f));
 
     return translateFactor * scalingFactor;
 }
