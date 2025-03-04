@@ -112,7 +112,8 @@ function init(containerID, minimapID, path, stepMultiRis) {
         panzoom.zoomWithWheel(event)
     
         currentScale = panzoom.getScale()
-    
+        currentScale = Math.round(currentScale * 10000) / 10000
+        
         // controllo dimensioni griglia
         const currentexponent = Math.log2(N)
         let newexponent = Math.ceil(Math.log2(currentScale))
