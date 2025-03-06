@@ -1,7 +1,7 @@
 /** 
  * MetaScreenshots permette di organizzre e visualizzare 
- * le immagini generate da un'applicaziione 3D
- * { github link }
+ * le immagini generate da un'applicaziione 3D OpenGL
+ * { https://github.com/irenepizzocaro/generateScreenshots.git }
  *
  * questa libreria necessita l'utilizzo della libreria PanZoom
  * <script src="https://unpkg.com/@panzoom/panzoom@4.6.0/dist/panzoom.min.js"></script>
