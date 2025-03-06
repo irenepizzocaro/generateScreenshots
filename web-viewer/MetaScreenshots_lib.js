@@ -8,18 +8,20 @@
  *  * Copyright Timmy Willison and other contributors
  * https://github.com/timmywil/panzoom/blob/main/MIT-License.txt
  * 
- *
+ * 
+ * inserisci nella cartella assets gli screenshots generati
 */
 
 
 /**
-     * Inizializza la griglia di immagini e la minimappa.
-     * 
-     * @param {string} containerID - ID dell'elemento div dentro il quale mettere la griglia.
-     * @param {string} minimapID - ID dell'elemento div dentro il quale mettere la minimap.
-     * @param {string} path - Percorso degli screenshots.
-     * @param {number} stepMultiRis - Numero di livelli multirisoluzione renderizzati.
-     */
+ * Inizializza la griglia di immagini e la minimappa.
+ * 
+ * @param {string} containerID - ID dell'elemento div dentro il quale mettere la griglia.
+ * @param {string} minimapID - ID dell'elemento div dentro il quale mettere la minimap.
+ * @param {string} path - Percorso degli screenshots.
+ * @param {number} stepMultiRis - Numero di livelli multirisoluzione renderizzati.
+ * 
+*/
 function init(containerID, minimapID, path, stepMultiRis) {
 
     console.log('init iniziata')
@@ -322,8 +324,6 @@ function init(containerID, minimapID, path, stepMultiRis) {
 
     let isDragging = false
     const minimapRect = minimap.getBoundingClientRect()
-    const containerRect = container.getBoundingClientRect()
-    const gridRect = grid.getBoundingClientRect();
     const img = document.createElement('img');
     img.src = path + `/1-0-0.png`
     minimap.appendChild(img)
@@ -332,6 +332,8 @@ function init(containerID, minimapID, path, stepMultiRis) {
         if (isDragging) return;
 
         const gridRect = grid.getBoundingClientRect();
+        const minimapRect = minimap.getBoundingClientRect()
+        const containerRect = container.getBoundingClientRect()
 
         const scaleX = minimapRect.width / gridRect.width;
         const scaleY = minimapRect.height / gridRect.height;
@@ -402,3 +404,5 @@ function init(containerID, minimapID, path, stepMultiRis) {
 
     updateMiniMap()
 }
+
+init("div1", "div2", "assets/", 7)
