@@ -62,7 +62,8 @@ function init(containerID, minimapID, path, stepMultiRis) {
             for (let x = 0; x < N; x++) {
                 const img = document.createElement('img');
     
-                img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='; // segnaposto
+                //img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='; // segnaposto 1:1
+                img.src = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E'";
                 if (wireframeFlag == true) {
                     img.dataset.src = path + "/wireframe" +  `/${N}-${x}-${y}.png`; 
                 } else {
@@ -405,4 +406,4 @@ function init(containerID, minimapID, path, stepMultiRis) {
     updateMiniMap()
 }
 
-init("div1", "div2", "assets/", 7)
+init("div1", "div2", "assets/", 6)
